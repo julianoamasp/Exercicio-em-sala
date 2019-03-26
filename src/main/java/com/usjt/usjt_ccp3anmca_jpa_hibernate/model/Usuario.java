@@ -4,11 +4,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
+	
+	@OneToOne(optional = false)
+	@JoinColumn (name = "id_do_meu_perfil")
+	private Perfil perfil;
+	public Perfil getPerfil() {
+	return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+	this.perfil = perfil;
+	}
+	
 	@Id
 	@GeneratedValue
 	private Long id;
